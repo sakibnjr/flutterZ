@@ -159,6 +159,8 @@ class _LoginPageState extends State<LoginPage> {
                       name = 'Nahid';
                     } else if (studentId == '213-15-4394') {
                       name = 'Palki';
+                    } else if (studentId == '212-15-4164') {
+                      name = 'Rayhan';
                     } else {
                       name = 'Guest';
                     }

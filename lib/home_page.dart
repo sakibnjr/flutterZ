@@ -1,5 +1,6 @@
 // home_page.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'classes_page.dart';
 import 'assignments_page.dart';
@@ -63,17 +64,15 @@ class HomePage extends StatelessWidget {
                     fontSize: 44,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 40),
                 Text(greeting, style: const TextStyle(fontSize: 32)),
-                const SizedBox(height: 10),
+                const SizedBox(height: 30),
                 if (nextClass != null)
                   Text(
-                      "You have ${todayClasses.length} class'es today, $totalAssignments tasks pending",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.white.withOpacity(0.5),
-                          color: const Color.fromARGB(255, 47, 58, 77))),
+                      "You have ${todayClasses.length} class'es today, $totalAssignments tasks pending"
+                          .toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 nextClass != null
                     ? Text(
@@ -92,7 +91,10 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.class_), label: 'Classes'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.class_),
+            label: 'Classes',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Tasks'),
           BottomNavigationBarItem(
               icon: Icon(Icons.announcement), label: 'Announcements'),
