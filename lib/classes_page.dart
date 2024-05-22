@@ -77,6 +77,8 @@ class ClassesPage extends StatelessWidget {
     'Friday': [],
   };
 
+  const ClassesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +110,7 @@ class ClassDetailPage extends StatelessWidget {
   final String day;
   final List<Map<String, String>> classes;
 
-  ClassDetailPage({required this.day, required this.classes});
+  const ClassDetailPage({super.key, required this.day, required this.classes});
 
   @override
   Widget build(BuildContext context) {

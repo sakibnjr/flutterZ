@@ -6,6 +6,8 @@ class AssignmentsPage extends StatelessWidget {
     'Pervasive Computing': ['Lab Task 1,2'],
   };
 
+  const AssignmentsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +40,8 @@ class AssignmentDetailPage extends StatelessWidget {
   final String subject;
   final List<String> assignments;
 
-  AssignmentDetailPage({required this.subject, required this.assignments});
+  const AssignmentDetailPage(
+      {super.key, required this.subject, required this.assignments});
 
   @override
   Widget build(BuildContext context) {

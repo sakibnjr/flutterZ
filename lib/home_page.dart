@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'classes_page.dart';
 import 'assignments_page.dart';
-import 'announcement_page.dart';
 
 class HomePage extends StatelessWidget {
   final String name;
@@ -34,10 +33,10 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/');
             },
@@ -60,13 +59,13 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Hi $name!',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 44,
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(greeting, style: TextStyle(fontSize: 32)),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                Text(greeting, style: const TextStyle(fontSize: 32)),
+                const SizedBox(height: 10),
                 if (nextClass != null)
                   Text(
                       "You have ${todayClasses.length} class'es today, $totalAssignments tasks pending",
@@ -74,25 +73,25 @@ class HomePage extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           backgroundColor: Colors.white.withOpacity(0.5),
-                          color: Color.fromARGB(255, 47, 58, 77))),
-                SizedBox(height: 10),
+                          color: const Color.fromARGB(255, 47, 58, 77))),
+                const SizedBox(height: 10),
                 nextClass != null
                     ? Text(
                         'Next class in ${nextClass['timeLeft']}:\n${nextClass['title']} in room ${nextClass['room']}',
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       )
                     : Text(
                         'No more classes for today, $totalAssignments tasks pending',
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.class_), label: 'Classes'),
           BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Tasks'),
           BottomNavigationBarItem(

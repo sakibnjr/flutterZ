@@ -5,12 +5,14 @@ import 'assignments_page.dart';
 import 'announcement_page.dart'; // Import the announcement page
 
 class AdminPage extends StatefulWidget {
+  const AdminPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _AdminPageState createState() => _AdminPageState();
 }
 
 class _AdminPageState extends State<AdminPage> {
-  final TextEditingController _dayController = TextEditingController();
   final TextEditingController _classTitleController = TextEditingController();
   final TextEditingController _classRoomController = TextEditingController();
   final TextEditingController _classTimeController = TextEditingController();
@@ -27,10 +29,10 @@ class _AdminPageState extends State<AdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Admin Page'),
+        title: const Text('Admin Page'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/');
             },
@@ -58,15 +60,15 @@ class _AdminPageState extends State<AdminPage> {
             ),
             TextField(
               controller: _classTitleController,
-              decoration: InputDecoration(labelText: 'Class Title'),
+              decoration: const InputDecoration(labelText: 'Class Title'),
             ),
             TextField(
               controller: _classRoomController,
-              decoration: InputDecoration(labelText: 'Class Room'),
+              decoration: const InputDecoration(labelText: 'Class Room'),
             ),
             TextField(
               controller: _classTimeController,
-              decoration: InputDecoration(labelText: 'Class Time'),
+              decoration: const InputDecoration(labelText: 'Class Time'),
             ),
             Row(
               children: [
@@ -80,9 +82,9 @@ class _AdminPageState extends State<AdminPage> {
                       });
                     });
                   },
-                  child: Text('Add Class'),
+                  child: const Text('Add Class'),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -94,17 +96,17 @@ class _AdminPageState extends State<AdminPage> {
                               classInfo['time'] == _classTimeController.text);
                     });
                   },
-                  child: Text('Remove Class'),
+                  child: const Text('Remove Class'),
                 ),
               ],
             ),
             TextField(
               controller: _assignmentCourseController,
-              decoration: InputDecoration(labelText: 'Assignment Course'),
+              decoration: const InputDecoration(labelText: 'Assignment Course'),
             ),
             TextField(
               controller: _assignmentDetailController,
-              decoration: InputDecoration(labelText: 'Assignment Detail'),
+              decoration: const InputDecoration(labelText: 'Assignment Detail'),
             ),
             Row(
               children: [
@@ -120,9 +122,9 @@ class _AdminPageState extends State<AdminPage> {
                       }
                     });
                   },
-                  child: Text('Add Assignment Detail'),
+                  child: const Text('Add Assignment Detail'),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -136,13 +138,13 @@ class _AdminPageState extends State<AdminPage> {
                       }
                     });
                   },
-                  child: Text('Remove Assignment Detail'),
+                  child: const Text('Remove Assignment Detail'),
                 ),
               ],
             ),
             TextField(
               controller: _announcementController,
-              decoration: InputDecoration(labelText: 'Announcement'),
+              decoration: const InputDecoration(labelText: 'Announcement'),
             ),
             Row(
               children: [
@@ -153,9 +155,9 @@ class _AdminPageState extends State<AdminPage> {
                           .add(_announcementController.text);
                     });
                   },
-                  child: Text('Add Announcement'),
+                  child: const Text('Add Announcement'),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -163,23 +165,23 @@ class _AdminPageState extends State<AdminPage> {
                           .remove(_announcementController.text);
                     });
                   },
-                  child: Text('Remove Announcement'),
+                  child: const Text('Remove Announcement'),
                 ),
               ],
             ),
             Expanded(
               child: ListView(
                 children: [
-                  Text('Class Schedule:'),
+                  const Text('Class Schedule:'),
                   for (var entry in ClassesPage.classSchedule.entries)
                     Text(
                         '${entry.key}: ${entry.value.map((classInfo) => '${classInfo['title']} (${classInfo['room']}, ${classInfo['time']})').join(', ')}'),
-                  SizedBox(height: 20),
-                  Text('Assignments:'),
+                  const SizedBox(height: 20),
+                  const Text('Assignments:'),
                   for (var entry in AssignmentsPage.assignments.entries)
                     Text('${entry.key}: ${entry.value.join(', ')}'),
-                  SizedBox(height: 20),
-                  Text('Announcements:'),
+                  const SizedBox(height: 20),
+                  const Text('Announcements:'),
                   for (var announcement in AnnouncementPage.announcements)
                     Text(announcement),
                 ],

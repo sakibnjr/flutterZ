@@ -4,7 +4,10 @@ import 'home_page.dart';
 import 'admin_page.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -37,24 +40,24 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               Column(
                 children: [
-                  Text(
+                  const Text(
                     'Welcome Back!',
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     'Please login to continue',
                     style: TextStyle(fontSize: 14, color: Colors.blue[700]),
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 60),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'Login as Admin',
                       style: TextStyle(fontSize: 18),
                     ),
@@ -70,14 +73,14 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               isAdmin
                   ? Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
                         controller: _studentIdController,
                         decoration: InputDecoration(
-                          icon: Icon(Icons.add_moderator_outlined),
+                          icon: const Icon(Icons.add_moderator_outlined),
                           iconColor: Colors.lightBlue,
                           labelText: 'Admin ID',
                           border: OutlineInputBorder(
@@ -92,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                           TextField(
                             controller: _studentIdController,
                             decoration: InputDecoration(
-                              icon: Icon(Icons.person),
+                              icon: const Icon(Icons.person),
                               iconColor: Colors.lightBlue,
                               labelText: 'Student ID',
                               hintText: 'XXX-XX-XXXX',
@@ -101,11 +104,11 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextField(
                             controller: _sectionController,
                             decoration: InputDecoration(
-                              icon: Icon(Icons.category),
+                              icon: const Icon(Icons.category),
                               iconColor: Colors.lightBlue,
                               labelText: 'Section',
                               hintText: '60_C',
@@ -117,10 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(fontSize: 18),
+                  textStyle: const TextStyle(fontSize: 18),
                   padding: const EdgeInsets.symmetric(
                       vertical: 8, horizontal: 80), // Adjust padding
                   shadowColor: Colors.blueAccent,
@@ -137,14 +140,16 @@ class _LoginPageState extends State<LoginPage> {
                   if (!isAdmin) {
                     if (studentId.isEmpty || section.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Please fill in all fields')),
+                        const SnackBar(
+                            content: Text('Please fill in all fields')),
                       );
                       return;
                     }
 
                     if (!RegExp(r'^\d{3}-\d{2}-\d{4}$').hasMatch(studentId)) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Invalid Student ID format')),
+                        const SnackBar(
+                            content: Text('Invalid Student ID format')),
                       );
                       return;
                     }
@@ -167,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                   } else {
                     if (studentId != 'admin') {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Invalid Admin ID')),
+                        const SnackBar(content: Text('Invalid Admin ID')),
                       );
                       return;
                     }
@@ -180,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   }
                 },
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Text(
                     'Login',

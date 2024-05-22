@@ -8,10 +8,12 @@ import 'admin_page.dart';
 import 'announcement_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginPage(),
         '/home': (context) =>
-            HomePage(name: ''), // Provide a default value for name
+            const HomePage(name: ''), // Provide a default value for name
         '/classes': (context) => ClassesPage(),
         '/assignments': (context) => AssignmentsPage(),
         '/admin': (context) => AdminPage(),
