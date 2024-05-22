@@ -1,4 +1,3 @@
-// admin_page.dart
 import 'package:flutter/material.dart';
 import 'classes_page.dart';
 import 'assignments_page.dart';
@@ -29,7 +28,15 @@ class _AdminPageState extends State<AdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Admin Page'),
+        title: const Text(
+          'Admin Page',
+          style: TextStyle(
+            color: Colors.redAccent,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+        iconTheme: const IconThemeData(color: Colors.redAccent),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -39,7 +46,7 @@ class _AdminPageState extends State<AdminPage> {
           ),
         ],
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -108,37 +115,41 @@ class _AdminPageState extends State<AdminPage> {
               controller: _assignmentDetailController,
               decoration: const InputDecoration(labelText: 'Assignment Detail'),
             ),
-            Row(
+            Wrap(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      String course = _assignmentCourseController.text;
-                      String detail = _assignmentDetailController.text;
-                      if (AssignmentsPage.assignments.containsKey(course)) {
-                        AssignmentsPage.assignments[course]!.add(detail);
-                      } else {
-                        AssignmentsPage.assignments[course] = [detail];
-                      }
-                    });
-                  },
-                  child: const Text('Add Assignment Detail'),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      String course = _assignmentCourseController.text;
-                      String detail = _assignmentDetailController.text;
-                      if (AssignmentsPage.assignments.containsKey(course)) {
-                        AssignmentsPage.assignments[course]!.remove(detail);
-                        if (AssignmentsPage.assignments[course]!.isEmpty) {
-                          AssignmentsPage.assignments.remove(course);
-                        }
-                      }
-                    });
-                  },
-                  child: const Text('Remove Assignment Detail'),
+                Wrap(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          String course = _assignmentCourseController.text;
+                          String detail = _assignmentDetailController.text;
+                          if (AssignmentsPage.assignments.containsKey(course)) {
+                            AssignmentsPage.assignments[course]!.add(detail);
+                          } else {
+                            AssignmentsPage.assignments[course] = [detail];
+                          }
+                        });
+                      },
+                      child: const Text('Add Assignment'),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          String course = _assignmentCourseController.text;
+                          String detail = _assignmentDetailController.text;
+                          if (AssignmentsPage.assignments.containsKey(course)) {
+                            AssignmentsPage.assignments[course]!.remove(detail);
+                            if (AssignmentsPage.assignments[course]!.isEmpty) {
+                              AssignmentsPage.assignments.remove(course);
+                            }
+                          }
+                        });
+                      },
+                      child: const Text('Remove Assignment'),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -146,7 +157,7 @@ class _AdminPageState extends State<AdminPage> {
               controller: _announcementController,
               decoration: const InputDecoration(labelText: 'Announcement'),
             ),
-            Row(
+            Wrap(
               children: [
                 ElevatedButton(
                   onPressed: () {
@@ -155,7 +166,7 @@ class _AdminPageState extends State<AdminPage> {
                           .add(_announcementController.text);
                     });
                   },
-                  child: const Text('Add Announcement'),
+                  child: const Text('Add New'),
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton(
@@ -165,28 +176,29 @@ class _AdminPageState extends State<AdminPage> {
                           .remove(_announcementController.text);
                     });
                   },
-                  child: const Text('Remove Announcement'),
+                  child: const Text('Remove Selected'),
                 ),
               ],
             ),
-            Expanded(
-              child: ListView(
-                children: [
-                  const Text('Class Schedule:'),
-                  for (var entry in ClassesPage.classSchedule.entries)
-                    Text(
-                        '${entry.key}: ${entry.value.map((classInfo) => '${classInfo['title']} (${classInfo['room']}, ${classInfo['time']})').join(', ')}'),
-                  const SizedBox(height: 20),
-                  const Text('Assignments:'),
-                  for (var entry in AssignmentsPage.assignments.entries)
-                    Text('${entry.key}: ${entry.value.join(', ')}'),
-                  const SizedBox(height: 20),
-                  const Text('Announcements:'),
-                  for (var announcement in AnnouncementPage.announcements)
-                    Text(announcement),
-                ],
-              ),
-            ),
+            const SizedBox(height: 20),
+            const Text('Class Schedule:',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            ...ClassesPage.classSchedule.entries.map((entry) {
+              return Text(
+                  '${entry.key}: ${entry.value.map((classInfo) => '${classInfo['title']} (${classInfo['room']}, ${classInfo['time']})').join(', ')}');
+            }).toList(),
+            const SizedBox(height: 20),
+            const Text('Assignments:',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            ...AssignmentsPage.assignments.entries.map((entry) {
+              return Text('${entry.key}: ${entry.value.join(', ')}');
+            }).toList(),
+            const SizedBox(height: 20),
+            const Text('Announcements:',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            ...AnnouncementPage.announcements.map((announcement) {
+              return Text(announcement);
+            }).toList(),
           ],
         ),
       ),

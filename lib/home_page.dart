@@ -1,13 +1,11 @@
-// home_page.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'classes_page.dart';
 import 'assignments_page.dart';
 
 class HomePage extends StatelessWidget {
   final String name;
-  const HomePage({Key? key, required this.name}) : super(key: key);
+  const HomePage({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +32,12 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text(
+          'Home',
+          style: TextStyle(
+            color: Colors.lightBlue,
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -92,20 +95,38 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.class_),
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.class_outlined),
             label: 'Classes',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Tasks'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.announcement), label: 'Announcements'),
+            icon: Icon(Icons.assignment),
+            label: 'Tasks',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.announcement),
+            label: 'Announcements',
+          ),
         ],
+        currentIndex: 0, // Set the initial selected index
+        selectedItemColor: Colors.lightBlue, // Color for selected item
+        unselectedItemColor: Colors.grey, // Color for unselected items
+        backgroundColor:
+            Colors.white, // Background color of the bottom navigation bar
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushNamed(context, '/classes');
+            Navigator.pushNamed(context, '/home', arguments: {'name': name});
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/assignments');
+            Navigator.pushNamed(context, '/classes', arguments: {'name': name});
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/announcements');
+            Navigator.pushNamed(context, '/assignments',
+                arguments: {'name': name});
+          } else if (index == 3) {
+            Navigator.pushNamed(context, '/announcements',
+                arguments: {'name': name});
           }
         },
       ),

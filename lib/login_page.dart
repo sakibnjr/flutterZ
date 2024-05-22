@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 10),
                   Text(
                     'Please login to continue',
-                    style: TextStyle(fontSize: 14, color: Colors.blue[700]),
+                    style: TextStyle(fontSize: 16, color: Colors.blue[700]),
                   ),
                 ],
               ),
@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(fontSize: 18),
                   padding: const EdgeInsets.symmetric(
-                      vertical: 8, horizontal: 80), // Adjust padding
+                      vertical: 5, horizontal: 40), // Adjust padding
                   shadowColor: Colors.blueAccent,
                   backgroundColor: Colors.lightBlue,
                   foregroundColor: Colors.white,
@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     );
                   } else {
-                    if (studentId != 'admin') {
+                    if (studentId != 'sixty_C1') {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Invalid Admin ID')),
                       );
@@ -188,10 +188,12 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Text(
                     'Login',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ),

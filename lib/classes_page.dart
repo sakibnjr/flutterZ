@@ -81,8 +81,19 @@ class ClassesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    final name = args['name'] ?? 'Guest';
+
     return Scaffold(
-      appBar: AppBar(title: Text('Classes')),
+      appBar: AppBar(
+        title: const Text(
+          'Classes',
+          style: TextStyle(
+            color: Colors.lightBlue,
+          ),
+        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: classSchedule.keys.map((day) {
@@ -93,14 +104,52 @@ class ClassesPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        ClassDetailPage(day: day, classes: classSchedule[day]!),
+                    builder: (context) => ClassDetailPage(
+                        day: day, classes: classSchedule[day]!, name: name),
                   ),
                 );
               },
             ),
           );
         }).toList(),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.class_outlined),
+            label: 'Classes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Tasks',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.announcement),
+            label: 'Announcements',
+          ),
+        ],
+        currentIndex: 1, // Set the initial selected index
+        selectedItemColor: Colors.lightBlue, // Color for selected item
+        unselectedItemColor: Colors.grey, // Color for unselected items
+        backgroundColor:
+            Colors.white, // Background color of the bottom navigation bar
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/home', arguments: {'name': name});
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/classes', arguments: {'name': name});
+          } else if (index == 2) {
+            Navigator.pushNamed(context, '/assignments',
+                arguments: {'name': name});
+          } else if (index == 3) {
+            Navigator.pushNamed(context, '/announcements',
+                arguments: {'name': name});
+          }
+        },
       ),
     );
   }
@@ -109,8 +158,13 @@ class ClassesPage extends StatelessWidget {
 class ClassDetailPage extends StatelessWidget {
   final String day;
   final List<Map<String, String>> classes;
+  final String name;
 
-  const ClassDetailPage({super.key, required this.day, required this.classes});
+  const ClassDetailPage(
+      {super.key,
+      required this.day,
+      required this.classes,
+      required this.name});
 
   @override
   Widget build(BuildContext context) {

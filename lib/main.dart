@@ -1,4 +1,3 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'home_page.dart';
@@ -24,13 +23,32 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) =>
-            const HomePage(name: ''), // Provide a default value for name
-        '/classes': (context) => ClassesPage(),
-        '/assignments': (context) => AssignmentsPage(),
-        '/admin': (context) => AdminPage(),
-        '/announcements': (context) => AnnouncementPage(),
+        '/': (context) => const LoginPage(),
+        '/home': (context) {
+          final args =
+              ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+          final name = args['name'] ?? 'Guest';
+          return HomePage(name: name);
+        },
+        '/classes': (context) {
+          final args =
+              ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+          final name = args['name'] ?? 'Guest';
+          return ClassesPage();
+        },
+        '/assignments': (context) {
+          final args =
+              ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+          final name = args['name'] ?? 'Guest';
+          return AssignmentsPage(name: name);
+        },
+        '/admin': (context) => const AdminPage(),
+        '/announcements': (context) {
+          final args =
+              ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+          final name = args['name'] ?? 'Guest';
+          return AnnouncementPage(name: name);
+        },
       },
     );
   }
