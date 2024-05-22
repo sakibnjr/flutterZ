@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AssignmentsPage extends StatelessWidget {
   static final Map<String, List<String>> assignments = {
-    'Math': ['Do Calculus HW'],
-    'English': ['Write a paragraph'],
+    'System Analysis': ['Prepare SRS Document'],
+    'Pervasive Computing': ['Lab Task 1,2'],
   };
 
   @override

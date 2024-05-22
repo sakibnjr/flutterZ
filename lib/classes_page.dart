@@ -2,31 +2,79 @@ import 'package:flutter/material.dart';
 
 class ClassesPage extends StatelessWidget {
   static final Map<String, List<Map<String, String>>> classSchedule = {
-    'Saturday': [
-      {'title': 'Math', 'room': 'AB201', 'time': '8:00 AM - 3:10 AM'},
-      {'title': 'English', 'room': 'AB202', 'time': '10:00 AM - 12:00 PM'}
-    ],
+    'Saturday': [],
     'Sunday': [
-      {'title': 'Math', 'room': 'AB201', 'time': '8:00 AM - 3:10 AM'}
+      {
+        'title': 'System Analysis',
+        'room': 'KT-213',
+        'time': '8:30 AM - 09:45 AM'
+      },
+      {
+        'title': 'Data Mining Lab',
+        'room': 'G1-017',
+        'time': '12:15 PM - 04:00 PM'
+      },
+      {
+        'title': 'Data Mining Theory',
+        'room': 'KT-201',
+        'time': '04:00 PM - 05:15 PM'
+      },
     ],
     'Monday': [
-      {'title': 'English', 'room': 'AB304', 'time': '2:00 PM - 3:00 PM'},
-      {'title': 'Biology', 'room': 'AB307', 'time': '11:00 AM - 4:00 PM'}
+      {
+        'title': 'Opeating Systems Lab',
+        'room': 'G1-022',
+        'time': '12:15 PM - 04:00 PM'
+      },
+      {
+        'title': 'Pervasive Computing',
+        'room': 'KT-216',
+        'time': '04:00 PM - 05:15 PM'
+      },
     ],
     'Tuesday': [
-      {'title': 'Physics', 'room': 'AB576', 'time': '4:00 PM - 5:00 PM'},
-      {'title': 'Chemistry', 'room': 'AB307', 'time': '11:00 AM - 1:00 PM'}
+      {'title': 'Economics', 'room': 'KT-919', 'time': '08:30 AM - 09:45 AM'},
+      {
+        'title': 'System Analysis',
+        'room': 'KT-515',
+        'time': '11:00 AM - 12:15 PM'
+      },
+      {
+        'title': 'Software Project V',
+        'room': 'KT-804',
+        'time': '04:00 PM - 05:15 PM'
+      },
     ],
     'Wednesday': [
-      {'title': 'Math', 'room': 'AB201', 'time': '8:00 AM - 3:10 AM'},
-      {'title': 'English', 'room': 'AB202', 'time': '10:00 AM - 12:00 PM'}
+      {
+        'title': 'Opeating Systems',
+        'room': 'KT-223',
+        'time': '08:30 AM - 09:45 AM'
+      },
+      {
+        'title': 'Economics',
+        'room': 'KT-318(B)',
+        'time': '09:45 AM - 11:00 AM'
+      },
     ],
     'Thursday': [
-      {'title': 'Math', 'room': 'AB201', 'time': '8:00 AM - 3:10 AM'}
+      {
+        'title': 'Pervasive Computing Lab',
+        'room': 'KT-501(A)',
+        'time': '08:30 AM - 12:15 PM'
+      },
+      {
+        'title': 'Data Mining Theory',
+        'room': 'KT-305',
+        'time': '01:30 PM - 02:45 PM'
+      },
+      {
+        'title': 'Research & Innovation',
+        'room': 'KT-304',
+        'time': '02:45 PM - 04:00 PM'
+      },
     ],
-    'Friday': [
-      {'title': 'No class', 'room': '', 'time': ''}
-    ],
+    'Friday': [],
   };
 
   @override
